@@ -1,0 +1,110 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* menu */
+nav {
+    background-color: violet !important;
+}
+
+nav div div a {
+    background-color: mediumvioletred;
+    border: 0.2rem solid darkviolet;
+    color: whitesmoke !important;
+    margin: 1rem;
+    padding: 0.5rem 2rem !important;
+    font-weight: bold !important;
+    border-radius: 10rem;
+}
+
+/* main */
+h1 {
+    text-align: center;
+    padding: 2rem;
+    background-color: violet;
+    color: whitesmoke;
+}
+
+/* form */
+.boton {
+    margin-bottom: 2rem;
+    padding: 0.5rem 3rem !important;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* tarjetas */
+.tarjetas {
+    margin-bottom: 3rem !important;
+}
+
+.tarjetaGrande {
+    margin: 6rem !important;
+    padding: 2rem;
+    max-width: 60rem; 
+    height: auto;
+    display: inline-block;
+}
+
+.imagenTarjeta {
+    min-width: 25rem; 
+    height: auto;
+}
+
+.card {
+    background-color: violet;
+    border: 0.2rem solid darkviolet;
+    color: whitesmoke;
+}
+
+.btn {
+    border: 0.2rem solid darkviolet;
+    background-color: mediumvioletred;
+    color: whitesmoke;
+}
+
+.precio {
+    font-weight: bold !important;
+    display: inline;
+    font-size: x-large;
+}
+
+/* tabla */
+table {
+    border: 0.1rem solid black;
+    margin-bottom: 3rem;
+    margin-top: 3rem !important;
+}
+
+th,
+td,
+tr {
+    border: 0.2rem solid darkviolet;
+    padding: 1rem;
+}
+
+th {
+    background-color: mediumvioletred;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/* footer */
+footer {
+    padding: 2rem;
+    background-color: violet;
+}
+
+.redsoc {
+    margin: 2rem !important;
+}
