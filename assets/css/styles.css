@@ -19,6 +19,10 @@ nav div div a {
     font-weight: bold !important;
     border-radius: 10rem;
 }
+.logo{
+    height: 5rem !important;
+    margin: 1rem;
+}
 
 /* main */
 h1 {
