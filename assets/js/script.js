@@ -1,7 +1,6 @@
 import { data } from "./data.js"
 
 data.events.forEach((element) => {
-    //Fechas totales
     let Tarjetas = document.getElementById("Events-Home")
     if (Tarjetas != null) {
         Tarjetas.insertAdjacentHTML(
@@ -61,7 +60,6 @@ data.events.forEach((element) => {
 })
 
 data.events.forEach((element) => {
-    //Fechas proximas
     let Tarjetas = document.getElementById("Events-Upcoming")
     if (Tarjetas != null) {
         if (data.currentDate < element.date) {
@@ -126,7 +124,6 @@ data.events.forEach((element) => {
 })
 
 data.events.forEach((element) => {
-    //Fechas pasadas
     let Tarjetas = document.getElementById("Events-Past")
     if (Tarjetas != null) {
         if (data.currentDate > element.date) {
@@ -190,7 +187,6 @@ data.events.forEach((element) => {
     }
 })
 
-//Filtrado
 const elementos = document.querySelectorAll(".card")
 const filtros = document.querySelectorAll(".filtro")
 
