@@ -1,9 +1,9 @@
 /* ajustes generales */
 * {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-    font-family: sans-serif;
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
+	font-family: sans-serif;
 }
 
 html {
@@ -20,8 +20,9 @@ main {
 }
 
 h1 {
-	font-size: 2em;
 	margin: 0.67em 0;
+	color: mediumvioletred;
+	font-weight: bold;
 }
 
 li {
@@ -43,9 +44,6 @@ pre {
 a {
 	text-decoration: none;
 	color: #555353;
-}
-
-a {
 	background-color: transparent;
 }
 
@@ -198,13 +196,27 @@ template {
 	height: 150px;
 }
 
+/* menu de navegacion */
 nav img {
-	width: 10vw;
+	width: 15rem;
+}
+.navbar {
+	background-color: violet;
+}
+.nav-item{
+	background-color: mediumvioletred;
+    border: 0.2rem solid darkviolet;
+	border-radius: 10rem;
+	margin: 0.3rem;
+}
+.nav-link{
+	color: whitesmoke !important;
+	font-weight: bold !important;
 }
 
 /* footer */
 footer {
-    background-color: violet;
+	background-color: violet;
 }
 .redsoc {
 	margin: 2rem !important;
@@ -212,35 +224,32 @@ footer {
 
 /* form */
 .boton {
-    margin-bottom: 2rem;
-    padding: 0.5rem 3rem !important;
+	margin-bottom: 2rem;
+	padding: 0.5rem 3rem !important;
 }
-
 .formulario {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
 }
 
 /* tabla */
 table {
-    border: 0.1rem solid black;
-    margin-bottom: 3rem;
-    margin-top: 3rem !important;
+	border: 0.1rem solid black;
+	margin-bottom: 3rem;
+	margin-top: 3rem !important;
 }
-
 th,
 td,
 tr {
-    border: 0.2rem solid darkviolet;
-    padding: 1rem;
+	border: 0.2rem solid darkviolet;
+	padding: 1rem;
 }
-
 th {
-    background-color: mediumvioletred;
-    color: whitesmoke;
-    font-weight: bold;
-    font-size: x-large;
+	background-color: mediumvioletred;
+	color: whitesmoke;
+	font-weight: bold;
+	font-size: x-large;
 }
