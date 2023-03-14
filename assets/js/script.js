@@ -6,25 +6,25 @@ data.events.forEach((element) => {
         Tarjetas.insertAdjacentHTML(
             "beforeend",
             `
-        <div class="d-inline-block mt-2 ms-2 card ${element.category}">
+        <div class="d-inline-block mt-2 ms-2 card border border-danger ${element.category}">
         <img src="${element.image}" class="card-img-top" alt="${element.name}">
         <div class="card-body d-flex flex-column justify-content-between">
             <h5 class="card-title">${element.name}</h5>
             <p class="card-text">${element.description}</p>
             <div class="d-flex">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${element._id
+                <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#${element._id
             }">
                 Learn more
                 </button>
-                <p class="ms-3 py-2 text-center d-block my-auto bg-success rounded w-25 text-light">${element.price
+                <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price
             }$</p>
             </div>
             <div class="modal fade" id="${element._id
             }" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content border border-danger">
                         <div class="modal-header">
-                            <h2 class="p-3 text-bg-dark rounded-3 modal-title fs-5" >${element.name
+                            <h2 class="p-3 text-bg-danger rounded-3 modal-title fs-5" >${element.name
             }</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -46,14 +46,13 @@ data.events.forEach((element) => {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success">Buy</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div> 
+        </div>
         `
         )
     }
@@ -66,26 +65,26 @@ data.events.forEach((element) => {
             Tarjetas.insertAdjacentHTML(
                 "beforeend",
                 `
-            <div class="d-inline-block mt-2 ms-2 card ${element.category}">
+            <div class="d-inline-block mt-2 ms-2 card border border-danger ${element.category}">
             <img src="${element.image}" class="card-img-top" alt="${element.name
                 }">
             <div class="card-body d-flex flex-column justify-content-between">
                 <h5 class="card-title">${element.name}</h5>
                 <p class="card-text">${element.description}</p>
                 <div class="d-flex">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${element._id
+                    <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#${element._id
                 }">
                     Learn more
                     </button>
-                    <p class="ms-3 py-2 text-center d-block my-auto bg-success rounded w-25 text-light">${element.price
+                    <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price
                 }$</p>
                 </div>
                 <div class="modal fade" id="${element._id
                 }" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <div class="modal-content border border-danger">
                             <div class="modal-header">
-                                <h2 class="p-3 text-bg-dark rounded-3 modal-title fs-5" >${element.name
+                                <h2 class="p-3 text-bg-danger rounded-3 modal-title fs-5" >${element.name
                 }</h2>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -109,14 +108,13 @@ data.events.forEach((element) => {
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Buy</button>
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div> 
+            </div>
             `
             )
         }
@@ -130,26 +128,26 @@ data.events.forEach((element) => {
             Tarjetas.insertAdjacentHTML(
                 "beforeend",
                 `
-            <div class="d-inline-block mt-2 ms-2 card ${element.category}">
+            <div class="d-inline-block mt-2 ms-2 card border border-danger ${element.category}">
             <img src="${element.image}" class="card-img-top" alt="${element.name
                 }">
             <div class="card-body d-flex flex-column justify-content-between">
                 <h5 class="card-title">${element.name}</h5>
                 <p class="card-text">${element.description}</p>
                 <div class="d-flex">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${element._id
+                    <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#${element._id
                 }">
                     Learn more
                     </button>
-                    <p class="ms-3 py-2 text-center d-block my-auto bg-success rounded w-25 text-light">${element.price
+                    <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price
                 }$</p>
                 </div>
                 <div class="modal fade" id="${element._id
                 }" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <div class="modal-content border border-danger">
                             <div class="modal-header">
-                                <h2 class="p-3 text-bg-dark rounded-3 modal-title fs-5" >${element.name
+                                <h2 class="p-3 text-bg-danger rounded-3 modal-title fs-5" >${element.name
                 }</h2>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -173,8 +171,7 @@ data.events.forEach((element) => {
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Buy</button>
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
