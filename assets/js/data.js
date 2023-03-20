@@ -1,5 +1,4 @@
 export { data }
-
 var data = {
 	currentDate: "2022-01-01",
 	events: [
