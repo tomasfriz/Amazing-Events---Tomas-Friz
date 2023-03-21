@@ -208,11 +208,20 @@ nav img {
 	border-radius: 10rem;
 	margin: 0.3rem;
 	padding: 0rem 0.5rem;
-	
 }
 .nav-link{
 	color: whitesmoke !important;
 	font-weight: bold !important;
+}
+
+/* checkbox */
+main form input {
+    margin-right: .50rem !important;
+}
+
+/* details */
+.h-75 {
+    min-height: 75vh;
 }
 
 /* footer */
