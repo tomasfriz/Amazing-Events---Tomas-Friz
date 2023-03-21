@@ -1,209 +1,175 @@
-import { data } from "./data.js"
+fetch('../amazing.json')
+    .then(response => response.json())
+    .then(data => traerDatos(data))
+    .catch(error => console.error(error))
 
-data.events.forEach((element) => {
-    let Tarjetas = document.getElementById("Events-Home")
-    if (Tarjetas != null) {
-        Tarjetas.insertAdjacentHTML(
+// Traer los datos
+function traerDatos(data) {
+    if (window.location.href.includes('/index.html')) {
+        data.events.forEach((element) => InsertarElementos(element))
+    } else if (window.location.href.includes('/pastEvents.html')) {
+        data.events.forEach((element) => { if (element.date < data.currentDate) { InsertarElementos(element) } })
+    } else if (window.location.href.includes('/futureEvents.html')) {
+        data.events.forEach((element) => { if (element.date > data.currentDate) { InsertarElementos(element) } })
+    }
+}
+
+// Insertar elementos
+const InsertCard = document.getElementById("InsertCard");
+function InsertarElementos(element) {
+    if (InsertCard != null) {
+        InsertCard.insertAdjacentHTML(
             "beforeend",
             `
-        <div class="d-inline-block mt-2 ms-2 card border border-danger ${element.category}">
-        <img src="${element.image}" class="card-img-top" alt="${element.name}">
-        <div class="card-body d-flex flex-column justify-content-between">
-            <h5 class="card-title">${element.name}</h5>
-            <p class="card-text">${element.description}</p>
-            <div class="d-flex">
-                <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#${element._id
-            }">
-                Learn more
-                </button>
-                <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price
-            }$</p>
-            </div>
-            <div class="modal fade" id="${element._id
-            }" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content border border-danger">
-                        <div class="modal-header">
-                            <h2 class="p-3 text-bg-danger rounded-3 modal-title fs-5" >${element.name
-            }</h2>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex wrap justify-content-around">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="8rem" viewBox="0 0 16 16">
-                                    <path d="M4 4.85v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Z"/>
-                                    <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13ZM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9V4.5Z"/>
-                                </svg>
-                                <div class="d-flex flex-column">
-                                    ${element.assistance == null
-                ? `<p><b>Estimate: </b>${element.estimate}</p>`
-                : `<p><b>Assistance: </b>${element.assistance}</p>`
-            }
-                                    <p><b>Capacity: </b>${element.capacity}</p>
-                                    <p><b>Category: </b>${element.category}</p>
-                                    <p><b>Place: </b>${element.place}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                        </div>
+        <div class="d-inline-block mt-2 ms-2 card ${element.category} ${element._id}">
+            <img src="${element.image}" class="card-img-top" alt="${element.name}">
+            <div style="height: 60%" class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h5 class="card-title">${element.name}</h5>
+                    <p class="card-text description">${element.description}</p>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <a type="button" class="btn btn-danger text-light" href="./details.html?id=${element._id}">
+                        Learn more
+                        </a>
+                        <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price}$</p>
                     </div>
+                    <p class="fs-6 text-muted text-center mb-0 mt-1">${element.date}</p>
                 </div>
             </div>
-        </div>
         </div>
         `
         )
     }
-})
-
-data.events.forEach((element) => {
-    let Tarjetas = document.getElementById("Events-Upcoming")
-    if (Tarjetas != null) {
-        if (data.currentDate < element.date) {
-            Tarjetas.insertAdjacentHTML(
-                "beforeend",
-                `
-            <div class="d-inline-block mt-2 ms-2 card border border-danger ${element.category}">
-            <img src="${element.image}" class="card-img-top" alt="${element.name
-                }">
-            <div class="card-body d-flex flex-column justify-content-between">
-                <h5 class="card-title">${element.name}</h5>
-                <p class="card-text">${element.description}</p>
-                <div class="d-flex">
-                    <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#${element._id
-                }">
-                    Learn more
-                    </button>
-                    <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price
-                }$</p>
-                </div>
-                <div class="modal fade" id="${element._id
-                }" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content border border-danger">
-                            <div class="modal-header">
-                                <h2 class="p-3 text-bg-danger rounded-3 modal-title fs-5" >${element.name
-                }</h2>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="d-flex wrap justify-content-around">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="8rem" viewBox="0 0 16 16">
-                                        <path d="M4 4.85v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Z"/>
-                                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13ZM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9V4.5Z"/>
-                                    </svg>
-                                    <div class="d-flex flex-column">
-                                        ${element.assistance == null
-                    ? `<p><b>Estimate: </b>${element.estimate}</p>`
-                    : `<p><b>Assistance: </b>${element.assistance}</p>`
-                }
-                                        <p><b>Capacity: </b>${element.capacity
-                }</p>
-                                        <p><b>Category: </b>${element.category
-                }</p>
-                                        <p><b>Place: </b>${element.place}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            `
-            )
-        }
-    }
-})
-
-data.events.forEach((element) => {
-    let Tarjetas = document.getElementById("Events-Past")
-    if (Tarjetas != null) {
-        if (data.currentDate > element.date) {
-            Tarjetas.insertAdjacentHTML(
-                "beforeend",
-                `
-            <div class="d-inline-block mt-2 ms-2 card border border-danger ${element.category}">
-            <img src="${element.image}" class="card-img-top" alt="${element.name
-                }">
-            <div class="card-body d-flex flex-column justify-content-between">
-                <h5 class="card-title">${element.name}</h5>
-                <p class="card-text">${element.description}</p>
-                <div class="d-flex">
-                    <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#${element._id
-                }">
-                    Learn more
-                    </button>
-                    <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price
-                }$</p>
-                </div>
-                <div class="modal fade" id="${element._id
-                }" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content border border-danger">
-                            <div class="modal-header">
-                                <h2 class="p-3 text-bg-danger rounded-3 modal-title fs-5" >${element.name
-                }</h2>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="d-flex wrap justify-content-around">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="8rem" viewBox="0 0 16 16">
-                                        <path d="M4 4.85v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Z"/>
-                                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13ZM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9V4.5Z"/>
-                                    </svg>
-                                    <div class="d-flex flex-column">
-                                        ${element.assistance == null
-                    ? `<p><b>Estimate: </b>${element.estimate}</p>`
-                    : `<p><b>Assistance: </b>${element.assistance}</p>`
-                }
-                                        <p><b>Capacity: </b>${element.capacity
-                }</p>
-                                        <p><b>Category: </b>${element.category
-                }</p>
-                                        <p><b>Place: </b>${element.place}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div> 
-            `
-            )
-        }
-    }
-})
-
-const elementos = document.querySelectorAll(".card")
-const filtros = document.querySelectorAll(".filtro")
-
-function filtrar() {
-    elementos.forEach((elemento) => {
-        let mostrar = true
-        filtros.forEach((filtro) => {
-            const valorFiltro = filtro.dataset.valor
-            if (filtro.checked) {
-                if (!elemento.classList.contains(valorFiltro)) {
-                    mostrar = false
-                }
-            }
-        })
-        elemento.style.display = mostrar
-            ? elemento.style.setProperty("display", "block", "important")
-            : elemento.style.setProperty("display", "none", "important")
-    })
 }
 
+// Crea filtros
+function crearFiltros(json) {
+    let seccionFiltros = document.getElementById("seccion-filtros");
+    let filtros = [];
+    json.events.forEach(element => {
+        let filtro = element.category
+        if (!filtros.includes(element.category)) {
+            seccionFiltros.insertAdjacentHTML('beforeend',
+                `<li>
+            <input class="filtro" type="checkbox" data-valor="${filtro}" id="${filtro}">
+            <label class="pe-3" for="${filtro}">${filtro}</label>
+            </li>
+            `)
+            filtros.push(filtro);
+        }
+    });
+}
+crearFiltros(data);
+
+//Filtrado
+const Tarjetas = Array.from(document.querySelectorAll(".card"));
+const filtros = Array.from(document.querySelectorAll(".filtro"));
+//Listener de evento
 filtros.forEach((filtro) => {
-    filtro.addEventListener("change", filtrar)
+    filtro.addEventListener("change", filtradoTotal);
 })
+
+function filtradoTotal() {
+    let filtroAproved = filtrarCheckbox();
+    tarjetaValida(filtroAproved);
+}
+
+function filtrarCheckbox() {
+    let filtrosActivos = filtros.filter(filtro => filtro.checked == true).map((filtro) => { return filtro.id });
+    return Tarjetas.map((tarjeta) => filtrosActivos.some(filtro => tarjeta.classList.contains(filtro)) ? tarjeta : undefined).filter(element => element != undefined);
+}
+
+function tarjetaValida(TarjetasValidas) {
+    Tarjetas.forEach(tarjeta => tarjeta.classList.add('d-none'));
+    //console.log(TarjetasValidas)
+    TarjetasValidas.forEach((element) => InsertarElementos(element));
+}
+
+//Filtrado de texto
+const search = document.querySelector("#Search");
+
+//Listener de texto
+search.addEventListener("keyup", () => {
+    //Cantidad de tarjetas ocultas
+    let tarjetasOcultas = 0;
+    //Si la barra de busqueda no esta vacia
+    if (search.value != '') {
+        //Si no hay filtros activos
+        if (filtrosActivos.length == 0) {
+            Tarjetas.forEach((Tarjeta) => {
+                //Se guarda toda la informacion de la tarjeta
+                let claseTarjeta = Tarjeta.textContent.toLowerCase();
+                if (claseTarjeta.includes(search.value.toLowerCase())) {
+                    visibility(Tarjeta, 'mostrar');
+                    notFound(false);
+                } else {
+                    visibility(Tarjeta, 'ocultar')
+                    tarjetasOcultas += 1;
+                }
+                if (tarjetasOcultas == Tarjetas.length) {
+                    notFound(true);
+                }
+            })
+            //Si hay filtros activos
+        } else {
+            let Activos = document.querySelectorAll('.Activo');
+            Activos.forEach((Tarjeta) => {
+                //Se guarda toda la informacion de la tarjeta
+                let claseTarjeta = Tarjeta.textContent.toLowerCase();
+                if (claseTarjeta.includes(search.value.toLowerCase())) {
+                    visibility(Tarjeta, 'mostrar');
+                    notFound(false);
+                } else {
+                    visibility(Tarjeta, 'ocultar')
+                    tarjetasOcultas += 1;
+                }
+                if (tarjetasOcultas == Activos.length) {
+                    notFound(true);
+                }
+            })
+        }
+        //Si la barra de busqueda esta vacia
+    } else {
+        if (filtrosActivos.length == 0) {
+            Tarjetas.forEach((Tarjeta) => {
+                visibility(Tarjeta, 'mostrar');
+                notFound(false);
+            })
+        }
+    }
+})
+
+//Si no encuentra los elementos..
+function notFound(cantidadDeCarteles) {
+    let cartel = document.getElementById("NotFound");
+    let bloqueMain = document.querySelector("main");
+    if (cantidadDeCarteles == 1) {
+        if (cartel == null) {
+            bloqueMain.insertAdjacentHTML(
+                "beforeend",
+                `
+                    <section id="NotFound" class="m-auto text-center w-50 shadow rounded p-3">
+                        <h2 class="fs-2">No events found<h2>
+                        <p class="fs-5 text-muted">Try again<p>
+                    </section>
+                `
+            )
+        }
+    } else if (cantidadDeCarteles == 0) {
+        if (cartel != null) {
+            cartel.remove();
+            cantidadDeCarteles = 0;
+        }
+    }
+}
+
+//Oculta o muestra los elementos
+function visibility(elemento, view) {
+    if (view == 'mostrar') {
+        elemento.style.setProperty("display", "block", "important");
+    } else if (view == 'ocultar') {
+        elemento.style.setProperty("display", "none", "important");
+    }
+}
