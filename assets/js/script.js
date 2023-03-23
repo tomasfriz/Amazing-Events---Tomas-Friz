@@ -71,16 +71,19 @@ filtros.forEach((filtro) => {
     filtro.addEventListener("change", filtradoTotal);
 })
 
+// Filtrado de todas las tarjetas
 function filtradoTotal() {
     let filtroAproved = filtrarCheckbox();
     tarjetaValida(filtroAproved);
 }
 
+// filtrado por checkbox
 function filtrarCheckbox() {
     let filtrosActivos = filtros.filter(filtro => filtro.checked == true).map((filtro) => { return filtro.id });
     return Tarjetas.map((tarjeta) => filtrosActivos.some(filtro => tarjeta.classList.contains(filtro)) ? tarjeta : undefined).filter(element => element != undefined);
 }
 
+//Valida las tarjetas
 function tarjetaValida(TarjetasValidas) {
     Tarjetas.forEach(tarjeta => tarjeta.classList.add('d-none'));
     //console.log(TarjetasValidas)
