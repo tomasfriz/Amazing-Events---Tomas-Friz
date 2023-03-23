@@ -1,7 +1,11 @@
-fetch('../amazing.json')
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
     .then(response => response.json())
-    .then(data => traerDatos(data))
-    .catch(error => console.error(error))
+    .then(data => {
+        traerDatos(data);
+        crearFiltros(data);
+        console.log(data);
+    })
+    .catch(error => console.log(error))
 
 // Traer los datos
 function traerDatos(data) {
@@ -61,7 +65,6 @@ function crearFiltros(json) {
         }
     });
 }
-crearFiltros(data);
 
 //Filtrado
 const Tarjetas = Array.from(document.querySelectorAll(".card"));

@@ -1,4 +1,9 @@
-import { data } from "./data.js"
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => console.log(error))
 const urlObject = new URL(window.location.href);
 const idObjeto = urlObject.searchParams.get('id');
 
