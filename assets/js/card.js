@@ -1,25 +1,20 @@
-fetch('https://mindhub-xj03.onrender.com/api/amazing')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => console.log(error))
-const urlObject = new URL(window.location.href);
-const idObjeto = urlObject.searchParams.get('id');
+import { data } from "./data.js"
+const urlObject = new URL(window.location.href)
+const idObjeto = urlObject.searchParams.get('id')
 
-let insertdata = document.getElementById("contenedor");
+let bodyInsert = document.getElementById("Contenedor")
 
-function InsertarDatos(id){
-    if (insertdata != null) {
-        data.events.forEach((event)=>{
-            if(event._id==id){
-                insertdata.insertAdjacentHTML("beforeend",`
+function InsertarElementos(id) {
+    if (bodyInsert != null) {
+        data.events.forEach((event) => {
+            if (event._id == id) {
+                bodyInsert.insertAdjacentHTML("beforeend", `
                 <div class="m-auto d-flex flex-column w-50">
-                        <div class="row shadow rounded d-flex p-3">
+                        <div class="row shadow rounded d-flex p-3 border border-dark bg-danger">
                             <div class="w-100 mx-3 mx-auto my-auto col">
-                                <img src="${event.image}" alt="Illustatrive image" class="w-100 rounded">
+                                <img src="${event.image}" alt="Illustatrive image" class="w-100 rounded border border-dark">
                             </div>
-                            <section class="d-flex text-dark flex-column g-2 col-sm-8">
+                            <section class="d-flex text-light flex-column g-2 col-sm-8">
                                 <h2>${event.name}<span class="badge fs-6 ms-2 bg-secondary">${event.date}</span></h2>
                                 <p>${event.description}</p>
                                 <section>
@@ -39,12 +34,12 @@ function InsertarDatos(id){
                                 </section>
                                 <section>
                                     <i class="bi bi-person-fill"></i>
-                                    <p class="d-inline fw-bold">${event.estimate==null?'Assistance':'Estimate'}</p>
-                                    <p class="d-inline">${event.estimate!=null?event.estimate:event.assistance}</p>
+                                    <p class="d-inline fw-bold">${event.estimate == null ? 'Assistance' : 'Estimate'}</p>
+                                    <p class="d-inline">${event.estimate != null ? event.estimate : event.assistance}</p>
                                 </section>
                             </section>
                         </div>
-                    <a class="btn btn-secondary my-2 shadow" href="./index.html"><i class="bi bi-arrow-left-short"></i> Back Home <i class="bi bi-house"></i></a>
+                    <a class="btn btn-dark my-2 shadow" href="./index.html">Back Home</a>
                 </div>
                 `
                 )
@@ -52,4 +47,5 @@ function InsertarDatos(id){
         })
     }
 }
-InsertarDatos(idObjeto);
+
+InsertarElementos(idObjeto)

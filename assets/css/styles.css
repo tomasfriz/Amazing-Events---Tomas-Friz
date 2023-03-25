@@ -13,6 +13,7 @@ html {
 
 body {
 	margin: 0;
+	background-color: whitesmoke;
 }
 
 main {
@@ -191,6 +192,7 @@ template {
 .carousel-inner>div>div {
 	width: 18rem;
 }
+
 .carousel-inner>div>div>img {
 	height: 150px;
 }
@@ -199,34 +201,38 @@ template {
 nav img {
 	width: 15rem;
 }
+
 .navbar {
 	background-color: violet;
 }
-.nav-item{
+
+.nav-item {
 	background-color: mediumvioletred;
 	border-radius: 10rem;
 	margin: 0.3rem;
 	padding: 0rem 0.5rem;
 }
-.nav-link{
+
+.nav-link {
 	color: whitesmoke !important;
 	font-weight: bold !important;
 }
 
 /* checkbox */
 main div form input {
-    margin-right: .50rem !important;
+	margin-right: .50rem !important;
 }
 
 /* details */
 .h-75 {
-    min-height: 75vh;
+	min-height: 75vh;
 }
 
 /* footer */
 footer {
 	background-color: violet;
 }
+
 .redsoc {
 	margin: 2rem !important;
 }
@@ -236,6 +242,7 @@ footer {
 	margin-bottom: 2rem;
 	padding: 0.5rem 3rem !important;
 }
+
 .formulario {
 	display: flex;
 	flex-direction: column;
@@ -250,12 +257,14 @@ table {
 	margin-bottom: 3rem;
 	margin-top: 3rem !important;
 }
+
 th,
 td,
 tr {
 	border: 0.2rem solid darkviolet;
 	padding: 1rem;
 }
+
 th {
 	background-color: mediumvioletred;
 	color: whitesmoke;
