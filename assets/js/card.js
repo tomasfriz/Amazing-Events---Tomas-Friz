@@ -9,7 +9,7 @@ function InsertarElementos(id) {
         data.events.forEach((event) => {
             if (event._id == id) {
                 bodyInsert.insertAdjacentHTML("beforeend", `
-                <div class="m-auto d-flex flex-column w-50">
+                <div class="my-5 d-flex flex-column w-75">
                         <div class="row shadow rounded d-flex p-3 border border-dark bg-danger">
                             <div class="w-100 mx-3 mx-auto my-auto col">
                                 <img src="${event.image}" alt="Illustatrive image" class="w-100 rounded border border-dark">
