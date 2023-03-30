@@ -8,9 +8,9 @@ fetch('./assets/amazing.json')
         function agarrarData(data) {
             if (window.location.href.includes('/index.html') || window.location.href == '') {
                 data.events.forEach((element) => InsertarElementos(element))
-            } else if (window.location.href.includes('/pEvents.html')) {
+            } else if (window.location.href.includes('/pastEvents.html')) {
                 data.events.forEach((element) => { if (element.date < data.currentDate) { InsertarElementos(element) } })
-            } else if (window.location.href.includes('/uEvents.html')) {
+            } else if (window.location.href.includes('/futureEvents.html')) {
                 data.events.forEach((element) => { if (element.date > data.currentDate) { InsertarElementos(element) } })
             }
         }
@@ -22,26 +22,23 @@ fetch('./assets/amazing.json')
                 bodyInsert.insertAdjacentHTML(
                     "beforeend",
                     `
-            <div class="d-inline-block mt-2 ms-2 card ${element.category} ${element._id}">
-                <img src="${element.image}" class="card-img-top" alt="${element.name}">
-                <div style="height: 60%" class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title">${element.name}</h5>
-                        <p class="card-text description">${element.description}</p>
-                    </div>
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <a type="button" class="btn btn-primary" href="./details.html?id=${element._id}">
-                            Learn more
-                            </a>
-                            <p class="ms-3 py-2 text-center d-block my-auto bg-success rounded w-25 text-light">${element.price}$</p>
-                        </div>
-                        <p class="fs-6 text-muted text-center mb-0 mt-1">${element.date}</p>
+        <div class="d-inline-block mt-2 ms-2 card border border-dark bg-danger text-light ${element.category.toLowerCase()} ${element._id}">
+            <img src="${element.image}" class="card-img-top border-bottom border-dark" alt="${element.name}">
+            <div style="height: 60%" class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h5 class="card-title">${element.name}</h5>
+                    <p class="card-text description py-4">${element.description}</p>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between">
+                        <a type="button" class="btn btn-dark" href="./details.html?id=${element._id}">
+                        Learn more
+                        </a>
+                        <p class="ms-3 py-2 text-center d-block my-auto bg-secondary rounded w-25 text-light">${element.price}$</p>
                     </div>
                 </div>
             </div>
-            `
-                )
+        </div>`)
             }
         }
 
@@ -133,10 +130,11 @@ fetch('./assets/amazing.json')
                 bodyInsert.insertAdjacentHTML(
                     "beforeend",
                     `
-            <div class="m-auto">
-                <h2>Not found</h2>
-            </div>
-            `)
+                    <section id="NotFound" class="m-auto text-center text-light w-50 shadow rounded p-3 bg-danger border border-dark">
+                        <h2 class="fs-2">No events found<h2>
+                        <p class="fs-5">Try again<p>
+                    </section>
+                `)
             } else {
                 return prueba;
             }
