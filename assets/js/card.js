@@ -12,12 +12,12 @@ fetch('./assets/amazing.json')
                     if (event._id == id) {
                         bodyInsert.insertAdjacentHTML("beforeend", `
                         <div class="my-5 d-flex flex-column w-75">
-                                <div class="row shadow rounded d-flex p-3 border border-dark bg-danger">
+                                <div class="row shadow rounded d-flex p-3 border border-danger bg-danger-subtle">
                                     <div class="w-100 mx-3 mx-auto my-auto col">
-                                        <img src="${event.image}" alt="Illustatrive image" class="w-100 rounded border border-dark">
+                                        <img src="${event.image}" alt="Illustatrive image" class="w-100 rounded border border-danger">
                                     </div>
                                     <section class="d-flex text-light flex-column g-2 col-sm-8">
-                                        <h2>${event.name}<span class="badge fs-6 ms-2 bg-secondary">${event.date}</span></h2>
+                                        <h2>${event.name}<span class="badge fs-6 ms-2 bg-danger">${event.date}</span></h2>
                                         <p>${event.description}</p>
                                         <section>
                                             <i class="bi bi-cash-stack"></i>
