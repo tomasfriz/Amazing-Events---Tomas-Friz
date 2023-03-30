@@ -178,7 +178,6 @@ fetch('./assets/amazing.json')
             <div class="col-4 fs-6 themed-grid-col border border-danger">$${sacarRevenues(arrayCategoriasPasadas[6])}</div>
             <div class="col-4 fs-6 themed-grid-col border border-danger">%${sacarPorcentaje(arrayCategoriasPasadas[6]).toFixed(2)}</div>
         </div>
-        `
-        )
+        `)
     })
     .catch(error => console.error(error));
