@@ -22,23 +22,25 @@ fetch('./assets/amazing.json')
                 bodyInsert.insertAdjacentHTML(
                     "beforeend",
                     `
-        <div class="d-inline-block mt-2 ms-2 card border border-danger bg-danger-subtle text-light ${element.category.toLowerCase()} ${element._id}">
-            <img src="${element.image}" class="card-img-top border-bottom border-danger" alt="${element.name}">
-            <div style="height: 60%" class="card-body d-flex flex-column justify-content-between">
-                <div>
-                    <h5 class="card-title">${element.name}</h5>
-                    <p class="card-text description py-4">${element.description}</p>
-                </div>
-                <div>
-                    <div class="d-flex justify-content-between">
-                        <a type="button" class="btn btn-dark" href="./details.html?id=${element._id}">
-                        Learn more
-                        </a>
-                        <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price}$</p>
+            <div class="d-inline-block mt-2 ms-2 card border border-danger bg-danger-subtle text-light ${element.category} ${element._id}">
+                <img src="${element.image}" class="card-img-top border-bottom border-danger" alt="${element.name}">
+                <div style="height: 60%" class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">${element.name}</h5>
+                        <p class="card-text description py-4">${element.description}</p>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <a type="button" class="btn btn-dark" href="./details.html?id=${element._id}">
+                            Learn more
+                            </a>
+                            <p class="ms-3 py-2 text-center d-block my-auto bg-danger rounded w-25 text-light">${element.price}$</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>`)
+            `
+                )
             }
         }
 
